@@ -1,0 +1,12 @@
+requests
+pandas
+opencv-python
+numpy
+scipy
+argparse
+torch
+torchvision
+python_speech_features
+matplotlib
+sns
+scikit-learn

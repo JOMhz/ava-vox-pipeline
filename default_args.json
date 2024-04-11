@@ -1,0 +1,17 @@
+{
+    "lr": 0.0001,
+    "lr_decay": 0.95,
+    "max_epoch": 1,
+    "test_interval": 1,
+    "batch_size": 1100,
+    "n_data_loader_thread": 6,
+    "eval_data_type": "val",
+    "downloadAVA": false,
+    "evaluation": false,
+    "n_splits": 5,
+    "scale_factor": 0.001,
+    "random_seed": 42,
+    "use_video": true,
+    "use_audio": true,
+    "use_temporal": true
+}
