@@ -4,6 +4,7 @@ import time, os, torch, argparse, warnings, glob
 from sklearn.model_selection import KFold
 from training.audio_visual_data_loader import ValLoader, ValLoaderAudio, ValLoaderVideo
 from training.train_eval import VoxSense
+from training.ASD import ASD
 from utils import get_fold_video_ids, get_loader, init_args, parse_args
 
 def main(args_update={}):
@@ -18,6 +19,7 @@ def main(args_update={}):
 
     epoch = 1
     model = VoxSense(epoch = epoch, **vars(args))
+    # model = ASD(epoch = epoch, **vars(args))
     model = model.cuda()
 
     print(f"Starting from epoch: {epoch}")
@@ -58,8 +60,8 @@ def main(args_update={}):
         train_loader = torch.utils.data.DataLoader(train_loader, batch_size=1, shuffle=True, num_workers=args.n_data_loader_thread, pin_memory=True)
         val_loader = torch.utils.data.DataLoader(val_loader, batch_size=1, shuffle=False, num_workers=args.n_data_loader_thread, pin_memory=True)
         
-        # train_metrics = model.train_network(epoch=epoch, loader=train_loader, max_epochs=args.max_epoch, **vars(args))
-        train_metrics = {}
+        train_metrics = model.train_network(epoch=epoch, loader=train_loader, max_epochs=args.max_epoch, **vars(args))
+        # train_metrics = {}
         if epoch % args.test_interval == 0:
             model.save_parameters(f"{args.model_save_path}/model_{epoch:04d}.model")
 
@@ -108,4 +110,4 @@ def main(args_update={}):
     metrics_df.to_csv(csv_file_path, index=False)
 
 if __name__ == "__main__":
-    main(args_update={})
+    main(args_update={"batch_size": 800})
