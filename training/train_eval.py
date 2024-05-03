@@ -20,7 +20,7 @@ class VoxSense(nn.Module):
         self.lossV = lossV()
         self.optim = torch.optim.Adam(self.parameters(), lr=lr)
         self.scheduler = torch.optim.lr_scheduler.StepLR(self.optim, step_size=1, gamma=lr_decay)
-        total_params = sum(param.numel() for param in self.model.parameters()) / 1024 / 1024
+        total_params = sum(param.numel() for param in self.model.parameters()) / 1000 / 1000
         print(f"{time.strftime('%m-%d %H:%M:%S')} Model parameter count = {total_params:.2f}M")
 
     def train_audio(self, loader, epoch, total_batches, print_update_interval):

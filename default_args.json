@@ -1,9 +1,9 @@
 {
     "lr": 0.0001,
     "lr_decay": 0.95,
-    "max_epoch": 1,
+    "max_epoch": 25,
     "test_interval": 1,
-    "batch_size": 1100,
+    "batch_size": 1000,
     "n_data_loader_thread": 6,
     "eval_data_type": "val",
     "downloadAVA": false,

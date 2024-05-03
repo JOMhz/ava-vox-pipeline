@@ -108,6 +108,7 @@ class TrainLoader(object):
             start = end
 
         self.audio_set = generate_audio_set(self.audio_path, mixLst)
+        
 
     def __getitem__(self, index):
         batchList = self.mini_batch[index]
