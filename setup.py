@@ -1,1 +1,5 @@
-# ToDO: Call set-up features
+from data_preperation.download_and_extract_dataset import download_dataset_videos
+from data_preperation.preprocessing import preprocess_AVA
+
+download_dataset_videos()
+preprocess_AVA()
