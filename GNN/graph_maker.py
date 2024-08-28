@@ -33,8 +33,7 @@ sorted_data = face_number_data[:, sorted_indices]
 sorted_models = [models[i] for i in sorted_indices]
 sorted_colors = [colors[i] for i in sorted_indices]
 
-# Plot the sorted bar chart
-fig, ax = plt.subplots(figsize=(10, 6))
+fig, ax = plt.subplots(figsize=(12, 6))
 
 for i in range(sorted_data.shape[1]):
     ax.bar(index + i * bar_width, sorted_data[:, i], bar_width, label=sorted_models[i], color=sorted_colors[i])
@@ -50,7 +49,9 @@ ax.set_title('mAP(%) for Different Models and Number of Faces (Sorted by Average
 ax.set_xticks(index + bar_width * (sorted_data.shape[1] / 2 - 0.5))
 ax.set_xticklabels(num_faces)
 ax.set_ylim(0, 110)
-ax.legend(title='Models', fontsize=10, title_fontsize=12, loc='upper right')
+
+# Move the legend to the right outside of the plot
+ax.legend(title='Models', fontsize=10, title_fontsize=12, loc='center left', bbox_to_anchor=(1, 0.5))
 
 plt.show()
 
@@ -63,8 +64,7 @@ sorted_data_new = face_size_data[:, sorted_indices_new]
 sorted_models_new = [models[i] for i in sorted_indices_new]
 sorted_colors_new = [colors[i] for i in sorted_indices_new]
 
-# Plot the sorted bar chart
-fig, ax = plt.subplots(figsize=(10, 6))
+fig, ax = plt.subplots(figsize=(12, 6))
 
 for i in range(sorted_data_new.shape[1]):
     ax.bar(index + i * bar_width, sorted_data_new[:, i], bar_width, label=sorted_models_new[i], color=sorted_colors_new[i])
@@ -80,6 +80,8 @@ ax.set_title('mAP(%) for Different Models and Face Sizes (Sorted by Average Rank
 ax.set_xticks(index + bar_width * (sorted_data_new.shape[1] / 2 - 0.5))
 ax.set_xticklabels(face_sizes)
 ax.set_ylim(0, 110)
-ax.legend(title='Models', fontsize=10, title_fontsize=12, loc='upper right')
+
+# Move the legend to the right outside of the plot
+ax.legend(title='Models', fontsize=10, title_fontsize=12, loc='center left', bbox_to_anchor=(1, 0.5))
 
 plt.show()
