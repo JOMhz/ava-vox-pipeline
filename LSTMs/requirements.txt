@@ -1,0 +1,9 @@
+torch
+torchvision==0.9.1
+numpy==1.21.2
+python_speech_features==0.6.0
+pandas
+tqdm
+opencv-python
+scipy
+matplotlib

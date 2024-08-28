@@ -1,0 +1,21 @@
+batch_size: 12
+channel1: 55
+channel2: 18
+dropout: 0.3
+exp_name: SPELL_ASD_lstm_conc_55_18_40_107_3.0e-01_1.0e-03_1.0e-06
+final_dim: 1
+graph_name: LSTM-CONC-AUG_csi_90.0_0.9
+graph_name2: LSTM-CONC-AUG_csi_90.0_0.9 RESNET18-TSM-AUG_csi_90.0_0.9
+loss_name: lossAV
+lr: 0.001
+lstm_proj_dim: 107
+model_name: SPELLA
+num_att_heads: 0
+num_epoch: 70
+num_modality: 2
+pre_computed_features: 5
+proj_dim: 40
+sch_param: 10
+use_ref: false
+use_spf: true
+wd: 1.0e-06

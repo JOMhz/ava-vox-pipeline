@@ -109,9 +109,11 @@ def process_csv_folder_list(csvs_folder_names):
         print(f'Combined data saved to: {combined_output_file}')
 
 
-
-# This preprocess is based on source [2]
 def preprocess_AVA(args):
+    """
+    This pre-processing code is inspired by https://github.com/TaoRuijie/TalkNet-ASD/blob/main/utils/tools.py
+    Which in turn was inspired by https://github.com/fuankarion/active-speakers-context/tree/master/data
+    """
     if not args:
         args = argparse.Namespace()
         args = init_args()
@@ -121,65 +123,62 @@ def preprocess_AVA(args):
 
 
 def extract_audio(args):
-    # Takes 1 hour to extract the audio from videos
+    # Extracts the audio from videos, processing takes approximately 1 hour
     for data_type in ['train', 'val']:
-        inpFolder = '%s/%s'%(args.visual_orig_path_AVA, data_type)
-        outFolder = '%s/%s'%(args.audio_orig_path_AVA, data_type)
-        os.makedirs(outFolder, exist_ok = True)
-        videos = glob.glob("%s/*"%(inpFolder))
-        for videoPath in videos:
-            audioPath = '%s/%s'%(outFolder, videoPath.split('/')[-1].split('.')[0] + '.wav')
-            cmd = ("ffmpeg -y -i %s -async 1 -ac 1 -vn -acodec pcm_s16le -ar 16000 -threads 8 %s -loglevel panic" % (videoPath, audioPath))
+        input_folder = f'{args.visual_orig_path_AVA}/{data_type}'
+        output_folder = f'{args.audio_orig_path_AVA}/{data_type}'
+        os.makedirs(output_folder, exist_ok=True)
+        videos = glob.glob(f"{input_folder}/*")
+        
+        for video_path in videos:
+            audio_path = f'{output_folder}/{os.path.basename(video_path).split(".")[0]}.wav'
+            cmd = f"ffmpeg -y -i {video_path} -async 1 -ac 1 -vn -acodec pcm_s16le -ar 16000 -threads 8 {audio_path} -loglevel panic"
             subprocess.call(cmd, shell=True, stdout=None)
 
-
 def extract_audio_clips(args):
-    # Take 3 minutes to extract the audio clips
-    dic = {'train':'train', 'val':'val'}
+    # Extracts audio clips from the audio, processing takes approximately 3 minutes
+    data_type_map = {'train': 'train', 'val': 'val'}
     for data_type in ['train', 'val']:
         df = pd.read_csv(os.path.join(args.trial_path_AVA, f'combined_{data_type}.csv'), engine='python')
-        # Separate data into negative and positive labels (ignoring label '2' for negative)
-        dfNeg = pd.concat([df[df['label_id'] == 0], df[df['label_id'] == 2]])
-        dfPos = df[df['label_id'] == 1]
-        # Combine positive and negative dataframes and reset index
-        df = pd.concat([dfPos, dfNeg]).reset_index(drop=True)
+        df_neg = pd.concat([df[df['label_id'] == 0], df[df['label_id'] == 2]])
+        df_pos = df[df['label_id'] == 1]
+        df = pd.concat([df_pos, df_neg]).reset_index(drop=True)
         df = df.sort_values(['entity_id', 'frame_timestamp']).reset_index(drop=True)
+        
+        entity_list = df['entity_id'].unique()
+        grouped_df = df.groupby('entity_id')
+        audio_features = {}
 
-        # Get unique entity IDs
-        entity_list = df['entity_id'].unique().tolist()
-        df = df.groupby('entity_id')
-        audioFeatures = {}
+        output_dir = os.path.join(args.audio_path_AVA, data_type)
+        audio_dir = os.path.join(args.audio_orig_path_AVA, data_type_map[data_type])
 
-        outDir = os.path.join(args.audio_path_AVA, data_type)
-        audioDir = os.path.join(args.audio_orig_path_AVA, dic[data_type])
+        # Ensure directories exist
+        for video_id in df['video_id'].unique():
+            dir_path = os.path.join(output_dir, video_id[0])
+            if not os.path.isdir(dir_path):
+                os.makedirs(dir_path)
 
-        # Ensure output directories exist for each video ID
-        for l in df['video_id'].unique().tolist():
-            d = os.path.join(outDir, l[0])
-            if not os.path.isdir(d):
-                os.makedirs(d)
-
-        # Process each entity in the dataset
+        # Process each entity
         for entity in entity_list:
-            ins_data = df.get_group(entity)
-            videoKey = ins_data.iloc[0]['video_id']
-            start = ins_data.iloc[0]['frame_timestamp']
-            end = ins_data.iloc[-1]['frame_timestamp']
-            entityID = ins_data.iloc[0]['entity_id']
-
-            insPath = os.path.join(outDir, videoKey, f'{entityID}.wav')
-
-            # If the audio feature for the video hasn't been loaded, load and store it
-            if videoKey not in audioFeatures.keys():                
-                audioFile = os.path.join(audioDir, f'{videoKey}.wav')
-                sr, audio = wavfile.read(audioFile)
-                audioFeatures[videoKey] = audio
+            entity_data = grouped_df.get_group(entity)
+            video_key = entity_data.iloc[0]['video_id']
+            start_time = entity_data.iloc[0]['frame_timestamp']
+            end_time = entity_data.iloc[-1]['frame_timestamp']
+            entity_id = entity_data.iloc[0]['entity_id']
             
-            audioStart = int(float(start) * sr)
-            audioEnd = int(float(end) * sr)
+            instance_path = os.path.join(output_dir, video_key, f'{entity_id}.wav')
 
-            audioData = audioFeatures[videoKey][audioStart:audioEnd]
-            wavfile.write(insPath, sr, audioData)
+            # Load and store audio data
+            if video_key not in audio_features:
+                audio_file = os.path.join(audio_dir, f'{video_key}.wav')
+                sample_rate, audio_data = wavfile.read(audio_file)
+                audio_features[video_key] = audio_data
+            
+            audio_start = int(float(start_time) * sample_rate)
+            audio_end = int(float(end_time) * sample_rate)
+
+            clip_audio_data = audio_features[video_key][audio_start:audio_end]
+            wavfile.write(instance_path, sample_rate, clip_audio_data)
 
 
 def extract_face_clips_from_videos(args):
