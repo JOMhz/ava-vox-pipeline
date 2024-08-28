@@ -13,7 +13,7 @@ Start by building the environment
 conda create -n VoxID python=3.10.12
 conda activate VoxID
 pip install -r requirement.txt
-
+```
 ## VoxID in AVA-Activespeaker dataset
 
 #### Data preparation
