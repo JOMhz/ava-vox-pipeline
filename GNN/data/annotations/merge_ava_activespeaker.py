@@ -2,6 +2,9 @@ import os
 import csv
 import glob
 
+"""
+    This code is by https://github.com/IntelLabs/GraVi-T
+"""
 
 def merge_csv_files(path_annts, sp):
     """

@@ -2,7 +2,9 @@ import numpy as np
 from itertools import product as product
 import torch
 from torch.autograd import Function
-
+"""
+Code from https://github.com/Junhua-Liao/Light-ASD
+"""
 
 def nms_(dets, thresh):
     """

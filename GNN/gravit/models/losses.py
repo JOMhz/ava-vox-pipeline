@@ -3,6 +3,9 @@ from torch import Tensor
 from torch.nn import Module, CrossEntropyLoss, BCEWithLogitsLoss, MSELoss, BCELoss, Linear
 import torch.nn.functional as F
 
+"""
+    This code is by https://github.com/IntelLabs/GraVi-T
+"""
 
 class CEWithREF(Module):
 	def __init__(self, w_ref, mode='train'):

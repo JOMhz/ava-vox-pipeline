@@ -10,6 +10,9 @@ from gravit.datasets import GraphDataset
 from gravit.utils.formatter import get_formatting_data_dict, get_formatted_preds
 from gravit.utils.eval_tool import get_eval_score
 
+"""
+    This code is by https://github.com/IntelLabs/GraVi-T
+"""
 
 def evaluate(cfg):
     """

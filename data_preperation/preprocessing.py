@@ -123,6 +123,10 @@ def preprocess_AVA(args):
 
 
 def extract_audio(args):
+    """
+    This pre-processing code is inspired by https://github.com/TaoRuijie/TalkNet-ASD/blob/main/utils/tools.py
+    Which in turn was inspired by https://github.com/fuankarion/active-speakers-context/tree/master/data
+    """
     # Extracts the audio from videos, processing takes approximately 1 hour
     for data_type in ['train', 'val']:
         input_folder = f'{args.visual_orig_path_AVA}/{data_type}'
@@ -136,6 +140,10 @@ def extract_audio(args):
             subprocess.call(cmd, shell=True, stdout=None)
 
 def extract_audio_clips(args):
+    """
+    This pre-processing code is inspired by https://github.com/TaoRuijie/TalkNet-ASD/blob/main/utils/tools.py
+    Which in turn was inspired by https://github.com/fuankarion/active-speakers-context/tree/master/data
+    """
     # Extracts audio clips from the audio, processing takes approximately 3 minutes
     data_type_map = {'train': 'train', 'val': 'val'}
     for data_type in ['train', 'val']:
@@ -182,6 +190,10 @@ def extract_audio_clips(args):
 
 
 def extract_face_clips_from_videos(args):
+    """
+    This pre-processing code is inspired by https://github.com/TaoRuijie/TalkNet-ASD/blob/main/utils/tools.py
+    Which in turn was inspired by https://github.com/fuankarion/active-speakers-context/tree/master/data
+    """
     dataset_type_to_folder = {'train': 'trainval', 'val': 'trainval'}
     
     for data_type in ['train', 'val']:

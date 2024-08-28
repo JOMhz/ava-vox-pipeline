@@ -1,5 +1,9 @@
 import matplotlib.pyplot as plt
 
+"""
+    This code is by https://github.com/IntelLabs/GraVi-T
+"""
+
 # Data from the user's message
 epochs = list(range(1, 71))
 loss_train = [

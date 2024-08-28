@@ -1,6 +1,8 @@
 import os
 from torchvision import transforms
-
+"""
+    This code is by https://github.com/fuankarion/active-speakers-context/tree/master
+"""
 video_train = transforms.Compose([
     transforms.Resize((144, 144)),
     transforms.ColorJitter(brightness=0.4, contrast=0.4, saturation=0.4),

@@ -2,6 +2,10 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
+"""
+Code from https://github.com/Junhua-Liao/Light-ASD
+"""
+
 class lossAV(nn.Module):
 	def __init__(self):
 		super(lossAV, self).__init__()

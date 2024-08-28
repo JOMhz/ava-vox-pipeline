@@ -3,6 +3,9 @@ import glob
 import torch
 import pickle  #nosec
 
+"""
+    This code is by https://github.com/IntelLabs/GraVi-T
+"""
 
 def get_formatting_data_dict(cfg):
     """

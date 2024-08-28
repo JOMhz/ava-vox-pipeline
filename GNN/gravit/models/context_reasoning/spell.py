@@ -2,7 +2,9 @@ import torch
 from torch.nn import Module, ModuleList, Conv1d, Sequential, ReLU, Dropout
 from torch_geometric.nn import Linear, EdgeConv, GATv2Conv, SAGEConv, BatchNorm
 
-
+"""
+    This code is by https://github.com/IntelLabs/GraVi-T
+"""
 class DilatedResidualLayer(Module):
     def __init__(self, dilation, in_channels, out_channels):
         super(DilatedResidualLayer, self).__init__()

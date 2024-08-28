@@ -4,6 +4,10 @@ import torch.nn as nn
 import torch.optim as optim
 import core.models as mdet
 
+"""
+    This code is by https://github.com/fuankarion/active-speakers-context/tree/master
+"""
+
 STE_inputs = {
     # input files
     'csv_train_full': 'training_data/ava_activespeaker_train_augmented.csv',

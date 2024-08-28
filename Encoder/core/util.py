@@ -1,6 +1,9 @@
 import os
 import torch
 
+"""
+    This code is by https://github.com/fuankarion/active-speakers-context/tree/master
+"""
 
 class Logger():
     def __init__(self, targetFile, separator=';'):

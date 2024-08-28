@@ -1,6 +1,9 @@
 import torch
 import torch.nn as nn
 
+"""
+Code from https://github.com/Junhua-Liao/Light-ASD
+"""
 
 class Audio_Block(nn.Module):
     def __init__(self, in_channels, out_channels):

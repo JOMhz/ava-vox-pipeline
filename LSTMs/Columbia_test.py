@@ -15,6 +15,10 @@ from scenedetect.detectors import ContentDetector
 from model.faceDetector.s3fd import S3FD
 from ASD import ASD
 
+"""
+Code from https://github.com/Junhua-Liao/Light-ASD
+"""
+
 warnings.filterwarnings("ignore")
 
 parser = argparse.ArgumentParser(description = "Columbia ASD Evaluation")

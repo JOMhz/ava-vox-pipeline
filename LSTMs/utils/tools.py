@@ -1,6 +1,10 @@
 import os, subprocess, glob, pandas, tqdm, cv2, numpy
 from scipy.io import wavfile
 
+"""
+Code from https://github.com/Junhua-Liao/Light-ASD
+"""
+
 def init_args(args):
     # The details for the following folders/files can be found in the annotation of the function 'preprocess_AVA' below
     args.modelSavePath    = os.path.join(args.savePath, 'model')

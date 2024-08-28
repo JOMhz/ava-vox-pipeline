@@ -4,6 +4,10 @@ import torch.nn.functional as F
 import torch.nn.init as init
 from .box_utils import Detect, PriorBox
 
+"""
+Code from https://github.com/Junhua-Liao/Light-ASD
+"""
+
 
 class L2Norm(nn.Module):
 

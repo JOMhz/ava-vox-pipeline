@@ -2,6 +2,10 @@
 
 See the paper "MobileNetV2: Inverted Residuals and Linear Bottlenecks" for more details.
 '''
+
+"""
+Code from https://github.com/okankop/ASDNet
+"""
 import torch
 import math
 import torch.nn as nn

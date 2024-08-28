@@ -7,6 +7,7 @@ from torch_geometric.data import Data, Dataset
 class GraphDataset(Dataset):
     """
     General class for graph dataset
+    This code is by https://github.com/IntelLabs/GraVi-T
     """
 
     def __init__(self, path_graphs):

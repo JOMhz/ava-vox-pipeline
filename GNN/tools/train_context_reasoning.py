@@ -8,6 +8,9 @@ from gravit.utils.logger import get_logger
 from gravit.models import build_model, get_loss_func
 from gravit.datasets import GraphDataset
 
+"""
+    This code is by https://github.com/IntelLabs/GraVi-T
+"""
 
 def train(cfg):
     """

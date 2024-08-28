@@ -1,6 +1,9 @@
 import torch
 from torch import nn
 
+"""
+Code inspired by https://github.com/Junhua-Liao/Light-ASD
+"""
 
 class BGRU(nn.Module):
     def __init__(self, channel):

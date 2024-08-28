@@ -5,6 +5,9 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
+"""
+Code from https://github.com/okankop/ASDNet
+"""
 
 def get_inplanes():
     return [64, 128, 256, 512]

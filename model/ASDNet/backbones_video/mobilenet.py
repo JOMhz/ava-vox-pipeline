@@ -3,6 +3,10 @@
 See the paper "MobileNets: Efficient Convolutional Neural Networks for Mobile Vision Applications"
 for more details.
 '''
+
+"""
+Code from https://github.com/okankop/ASDNet
+"""
 import torch
 import torch.nn as nn
 import torch.nn.functional as F

@@ -6,6 +6,9 @@ from scipy.io import wavfile
 #Dont change
 sampling_rate = 16000
 
+"""
+    This code is by https://github.com/fuankarion/active-speakers-context/tree/master
+"""
 
 def generate_audio_meta_data(full_df, balanced=True, random_seed=42):
     # Assumes there is always more negatives than positives.

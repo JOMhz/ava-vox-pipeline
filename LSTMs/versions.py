@@ -1,6 +1,10 @@
 import sys
 import pkg_resources
 
+"""
+Code from https://github.com/Junhua-Liao/Light-ASD
+"""
+
 # List of packages to check
 packages = ['torch', 'torchvision', 'numpy', 'python_speech_features']
 

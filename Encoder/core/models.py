@@ -1,7 +1,9 @@
 import torch
 import torch.nn as nn
 import torch.nn.parameter
-
+"""
+    This code is by https://github.com/fuankarion/active-speakers-context/tree/master
+"""
 try:
     from torch.hub import load_state_dict_from_url
 except ImportError:

@@ -5,6 +5,10 @@ from torch.autograd import Variable
 import math
 from functools import partial
 
+"""
+Code from https://github.com/okankop/ASDNet
+"""
+
 __all__ = ['ResNeXt', 'resnet50', 'resnet101']
 
 

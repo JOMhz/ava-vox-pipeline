@@ -2,6 +2,9 @@ import subprocess
 import glob
 import os
 
+"""
+    This code is by https://github.com/fuankarion/active-speakers-context/tree/master
+"""
 
 def extractAudioFromVideo(video, targetAudio):
     command = ("ffmpeg -y -i %s -async 1 -ac 1 -vn -acodec pcm_s16le -ar 16000 %s" % (video, targetAudio))

@@ -7,6 +7,9 @@ from functools import partial
 from multiprocessing import Pool
 from torch_geometric.data import Data
 
+"""
+    This code is by https://github.com/IntelLabs/GraVi-T
+"""
 
 def generate_temporal_graph(data_file, args, path_graphs, actions, train_ids, all_ids):
     """

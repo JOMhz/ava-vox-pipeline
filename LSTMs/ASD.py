@@ -8,6 +8,10 @@ from subprocess import PIPE
 from loss import lossAV, lossV
 from model.Model import ASD_Model
 
+"""
+Code inspired from https://github.com/Junhua-Liao/Light-ASD
+"""
+
 class ASD(nn.Module):
     def __init__(self, lr = 0.001, lrDecay = 0.95, l1_strength=0.01, **kwargs):
         super(ASD, self).__init__()

@@ -6,6 +6,9 @@ import torch
 from sklearn.metrics import roc_auc_score
 from sklearn.metrics import average_precision_score
 
+"""
+    This code is by https://github.com/fuankarion/active-speakers-context/tree/master
+"""
 
 def optimize_av_losses(model, dataloader_train, data_loader_val, device,
                        criterion, optimizer, scheduler, num_epochs,

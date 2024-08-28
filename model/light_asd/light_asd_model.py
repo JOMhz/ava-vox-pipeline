@@ -4,6 +4,10 @@ import torch.nn as nn
 from model.light_asd.classifier import BGRU
 from model.light_asd.encoder import visual_encoder, audio_encoder
 
+"""
+Code from https://github.com/Junhua-Liao/Light-ASD
+"""
+
 class ASD_Model(nn.Module):
     def __init__(self):
         super(ASD_Model, self).__init__()

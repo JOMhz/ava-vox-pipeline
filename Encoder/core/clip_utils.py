@@ -2,6 +2,9 @@ import os
 
 
 def generate_clip_meta(entity_meta_data, midone, half_clip_size):
+    """
+    This pre-processing code is by https://github.com/fuankarion/active-speakers-context/tree/master
+    """
     max_span_left = _get_clip_max_span(entity_meta_data, midone, -1,
                                        half_clip_size+1)
     max_span_right = _get_clip_max_span(entity_meta_data, midone, 1,
@@ -14,6 +17,9 @@ def generate_clip_meta(entity_meta_data, midone, half_clip_size):
 
 
 def _get_clip_max_span(csv_data, midone, direction, max):
+    """
+    This pre-processing code is by https://github.com/fuankarion/active-speakers-context/tree/master
+    """
     idx = 0
     for idx in range(0, max):
         if midone+(idx*direction) < 0:
@@ -25,6 +31,9 @@ def _get_clip_max_span(csv_data, midone, direction, max):
 
 
 def _extend_clip_data(clip_data, max_span_left, max_span_right, half_clip_size):
+    """
+    This pre-processing code is by https://github.com/fuankarion/active-speakers-context/tree/master
+    """
     if max_span_left < half_clip_size:
         for i in range(half_clip_size-max_span_left):
             clip_data.insert(0, clip_data[0])

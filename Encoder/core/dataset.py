@@ -14,6 +14,10 @@ import core.io as io
 import core.clip_utils as cu
 import multiprocessing as mp
 
+"""
+    This code is by https://github.com/fuankarion/active-speakers-context/tree/master
+"""
+
 class CachedAVSource(data.Dataset):
     def __init__(self):
         # Cached data

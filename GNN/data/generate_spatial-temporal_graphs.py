@@ -8,6 +8,9 @@ from functools import partial
 from multiprocessing import Pool
 from torch_geometric.data import Data
 
+"""
+    This code is by https://github.com/IntelLabs/GraVi-T
+"""
 
 def _get_time_windows(list_fts, time_span):
     """

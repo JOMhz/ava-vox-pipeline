@@ -2,6 +2,11 @@
 
 See the paper "ShuffleNet: An Extremely Efficient Convolutional Neural Network for Mobile Devices" for more details.
 '''
+
+"""
+Code from https://github.com/okankop/ASDNet
+"""
+
 import torch
 import torch.nn as nn
 import torch.nn.functional as F

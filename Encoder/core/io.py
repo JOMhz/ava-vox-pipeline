@@ -8,6 +8,10 @@ import csv
 import time
 import json
 
+"""
+    This code is by https://github.com/fuankarion/active-speakers-context/tree/master
+"""
+
 def preprocessRGBData(rgb_data):
     rgb_data = rgb_data.astype('float32')
     rgb_data = rgb_data/255.0

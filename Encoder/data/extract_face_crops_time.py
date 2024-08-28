@@ -5,6 +5,9 @@ import pandas as pd
 import cv2
 import random
 
+"""
+    This code is by https://github.com/fuankarion/active-speakers-context/tree/master
+"""
 
 def generate_mini_dataset(video_dir, output_dir, df, balanced=False):
     # Assumes there is always more negatives than positives.

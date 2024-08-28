@@ -3,6 +3,10 @@ from scipy.io import wavfile
 from torchvision.transforms import RandomCrop
 import pickle
 
+"""
+Code from https://github.com/Junhua-Liao/Light-ASD
+"""
+
 def load_data(filepath):
     with open(filepath, 'rb') as file:
         data = pickle.load(file)
