@@ -1,6 +1,7 @@
 # ava-vox-pipeline
 The repo contains the official code and models for "Audio-Visual Active Speaker Detection: A Hybrid Approach Using Machine Learning"
 ![voxID](https://github.com/user-attachments/assets/936b6385-cdc8-4118-8cdb-16b358972bf1)
+https://drive.google.com/file/d/1gO9DvAUL0JdrKzvd4xcvsyIho0PzaggA/view?usp=sharing
 ## Notes Before Starting
 
 To avoid issues with GPU drivers you should do all work within a docker container https://hub.docker.com/r/nvidia/cuda
